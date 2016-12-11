@@ -1,5 +1,21 @@
-<main>
+
     <div class="container body-content">
+        <div class="sidebar-wrapper">
+            <div class="sidebar-wrapper-toggle">
+                <div class="toggle-btn"></div>
+                <h3 class="sidebar-title">Categories</h3>
+                <ul class="sidebar-nav">
+                    <li th:each="category : ${categories}">
+                        <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name + ' (' + #sets.size(category.articles) + ')'}">
+                        </a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-2 col-sm-3 col-md-3 col-lg-2 hidden-xs"></div>
+        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 content">
         <div class="row">
             <div class="col-md-12">
                 <article>
@@ -25,4 +41,4 @@
             </div>
         </div>
     </div>
-</main>
+</div>

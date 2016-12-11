@@ -1,16 +1,22 @@
-<main>
-<div class="container body-content">
-    <div class="row">
-        <div class="col-md-6" th:each="category : ${categories}">
-            <header>
-                <h2>
-                    <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name + ' (' + #sets.size(category.articles) + ')'}">
-                    </a>
-                </h2>
+
+<div class="container-fluid body-content">
+    <div class="sidebar-wrapper">
+        <div class="sidebar-wrapper-toggle">
+            <div class="toggle-btn"></div>
+            <h3 class="sidebar-title">Categories</h3>
+            <ul class="sidebar-nav">
+                <li th:each="category : ${categories}">
+                        <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name + ' (' + #sets.size(category.articles) + ')'}">
+                        </a>
+                </li>
 
 
-            </header>
+            </ul>
         </div>
     </div>
+    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-2 hidden-xs"></div>
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 content">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cumque, doloribus error hic iste nobis non veritatis voluptatum! Hic officiis possimus rerum unde! Accusantium assumenda ea et fugit hic illum iste laborum magni minus mollitia, natus numquam optio porro, sed sit tempore tenetur unde voluptatibus. Architecto consectetur id neque officia voluptate? Atque dicta dolor doloribus eaque expedita harum inventore, laboriosam nisi perferendis vel? Aspernatur, consequatur debitis dolorem doloremque labore molestias placeat quis sed tenetur voluptate? Adipisci aut beatae cum cupiditate dignissimos ducimus eligendi facilis fuga iusto magni maiores minima minus modi molestiae nam odit, omnis ratione tempore totam ullam voluptatem?
+    </div>
 </div>
-</main>
+

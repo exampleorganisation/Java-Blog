@@ -7,9 +7,11 @@
 
 <header th:include="fragments/header"></header>
 
-<main th:include="${view}"></main>
+<div th:include="${view}"></div>
 
-<footer th:include="fragments/footer"></footer>
+<footer class="main-footer text-right" th:include="fragments/footer">
+
+</footer>
 
 <span th:include="fragments/scripts-bundle"></span>
 

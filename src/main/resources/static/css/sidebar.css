@@ -1,0 +1,150 @@
+body {
+    overflow-x: hidden;
+}
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+.sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    width: 250px;
+    height: 100%;
+    left:0;
+    background: #1a242f;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    top: 60px;
+}
+
+#wrapper.toggled .sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    padding: 0 0 0 10px;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-title {
+    color: #ddd;
+    margin: 20px 0 15px 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+.sidebar-wrapper-toggle {
+    position: relative;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.toggle-btn {
+    width: 30px;
+    height: 50px;
+    background: #1a242f;
+    position: absolute;
+    right: -30px;
+    top: calc(50% - 50px);
+    border-radius:0 50% 50% 0;
+    cursor: pointer;
+}
+
+.toggle-btn {
+    display: none;
+}
+
+.content {
+    padding-left: 50px;
+}
+
+@media(min-width:1366px) {
+    .content {
+        padding-left:0;
+    }
+}
+
+
+
+
+@media(max-width:768px) {
+    .toggle-btn {
+        display: block;
+    }
+
+    .content {
+        padding-left: 0;
+    }
+
+    .sidebar-wrapper {
+        width: 250px;
+        left: -250px;
+    }
+
+    .sidebar-wrapper.open {
+        left: 0;
+    }
+}

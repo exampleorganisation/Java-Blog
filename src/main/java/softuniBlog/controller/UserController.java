@@ -40,6 +40,12 @@ public class UserController {
     @PostMapping("/register")
     public String registerProcess(UserBindingModel userBindingModel){
 
+        User user1 = this.userRepository.findByEmail(userBindingModel.getEmail());
+
+        if (user1 != null) {
+            return "redirect:/error/existingUser";
+        }
+
         if(!userBindingModel.getPassword().equals(userBindingModel.getConfirmPassword())){
             return "redirect:/register";
         }
@@ -59,6 +65,13 @@ public class UserController {
         this.userRepository.saveAndFlush(user);
 
         return "redirect:/login";
+    }
+
+    @GetMapping("/error/existingUser")
+    public String existingUser(Model model){
+        model.addAttribute("view", "error/existingUser");
+
+        return "base-layout";
     }
 
     @GetMapping("/login")

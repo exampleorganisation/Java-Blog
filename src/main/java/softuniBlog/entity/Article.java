@@ -59,7 +59,13 @@ public class Article {
 
     @Transient
     public String getSummary(){
-       return this.getContent().substring(0,this.getContent().length() / 4) + "...";
+        if(this.getContent().length() < 25) {
+            return this.getContent();
+        }
+        else {
+            return this.getContent().substring(0,25) + "...";
+        }
+
     }
 
     private  Category category;

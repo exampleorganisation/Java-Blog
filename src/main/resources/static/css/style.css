@@ -7090,4 +7090,11 @@ article .author  {
   margin: 0;
 }
 
+.article-item p {
+  word-break: break-word;
+  margin: 0;
+}
+
+
+
 

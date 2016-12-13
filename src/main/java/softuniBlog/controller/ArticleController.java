@@ -74,6 +74,11 @@ Category category = this.categoryRepository.findOne(articleBindingModel.getCateg
             model.addAttribute("user", entityUser);
         }
 
+        List<Category> categories = this.categoryRepository.findAll();
+
+        model.addAttribute("view", "article/details");
+        model.addAttribute("categories", categories);
+
         Article article = this.articleRepository.findOne(id);
 
         model.addAttribute("article", article);

@@ -1,13 +1,12 @@
-
-<div class="container-fluid body-content">
+<div class="container-fluid body-content" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="sidebar-wrapper">
         <div class="sidebar-wrapper-toggle">
             <div class="toggle-btn"></div>
             <h3 class="sidebar-title">Categories</h3>
             <ul class="sidebar-nav">
                 <li th:each="category : ${categories}">
-                        <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name + ' (' + #sets.size(category.articles) + ')'}">
-                        </a>
+                    <a th:href="@{/category/{id}(id=${category.id})}" th:text="${category.name + ' (' + #sets.size(category.articles) + ')'}">
+                    </a>
                 </li>
 
 

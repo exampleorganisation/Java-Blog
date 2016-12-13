@@ -11,8 +11,11 @@ import softuniBlog.entity.Category;
 import softuniBlog.repository.ArticleRepository;
 import softuniBlog.repository.CategoryRepository;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
@@ -20,13 +23,27 @@ public class HomeController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ArticleRepository articleRepository;
+
     @GetMapping("/")
     public String index(Model model) {
 
         List<Category> categories = this.categoryRepository.findAll();
 
+        List<Article> lastFourArticles = this.articleRepository.findAll();
+        lastFourArticles = lastFourArticles.stream().sorted(Comparator.comparingInt(Article::getId)).collect(Collectors.toList());
+        Collections.reverse(lastFourArticles);
+
+
+        if(lastFourArticles.size() >= 6){
+            lastFourArticles = lastFourArticles.subList(0, 6);
+
+        }
+
         model.addAttribute("view", "home/index");
         model.addAttribute("categories", categories);
+        model.addAttribute("articles", lastFourArticles);
         return "base-layout";
 
     }
@@ -57,4 +74,6 @@ public class HomeController {
         model.addAttribute("category", category);
         return "base-layout";
     }
+
+
 }

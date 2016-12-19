@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import softuniBlog.bindingModel.CategoryBindingModel;
 import softuniBlog.entity.Article;
 import softuniBlog.entity.Category;
+import softuniBlog.entity.User;
 import softuniBlog.repository.ArticleRepository;
 import softuniBlog.repository.CategoryRepository;
 
@@ -49,7 +50,15 @@ public class CategoryController {
     }
 
     @PostMapping("create")
-    public String createProcess(CategoryBindingModel categoryBindingModel){
+    public String createProcess(CategoryBindingModel categoryBindingModel ,@PathVariable Integer id){
+
+        Category category1 = this.categoryRepository.findOne(id);
+
+        if (!this.categoryRepository.exists(id)) {
+            return "redirect:/error/existingCategory";
+        }
+
+
         if(StringUtils.isEmpty(categoryBindingModel.getName())){
             return "redirect:/admin/categories/create";
 

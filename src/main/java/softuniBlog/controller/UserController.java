@@ -67,6 +67,13 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/error/existingCategory")
+    public String existingCategory(Model model){
+        model.addAttribute("view", "error/existingCategory");
+
+        return "base-layout";
+    }
+
     @GetMapping("/error/existingUser")
     public String existingUser(Model model){
         model.addAttribute("view", "error/existingUser");
